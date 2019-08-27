@@ -1,9 +1,10 @@
 <?php
 
-namespace ElNelsonPerez\KendoGridParser;
+namespace ElNelsonPerez\KendroGridParser\Parsers;
+use ElNelsonPerez\KendroGridParser\Base\KendoGridParser;
 use Tinderbox\ClickhouseBuilder\Query\Expression;
 
-class ClickHouseKendoGridService extends KendoGridService
+class ClickHouseKendoGridParser extends KendoGridParser
 {
     protected $stringOps = [
         'eq'             => 'LIKE',

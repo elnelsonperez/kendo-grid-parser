@@ -1,23 +1,17 @@
 <?php
 
-namespace ElNelsonPerez\KendoGridParser;
-use Tinderbox\ClickhouseBuilder\Query\Builder;
+namespace ElNelsonPerez\KendroGridParser\Adapters;
+use ElNelsonPerez\KendroGridParser\Base\KendoQueryBuilderAdapter;
+use Tinderbox\ClickhouseBuilder\Integrations\Laravel\Builder;
 use Tinderbox\ClickhouseBuilder\Query\Expression;
 
-class ClickHouseBuilderAdapter implements IKendoQueryBuilderAdapter
+class ClickHouseBuilderAdapter extends KendoQueryBuilderAdapter
 {
 
-    private $builder;
-
-    public function __construct(Builder $builder)
-    {
-        $this->builder = $builder;
-    }
-
-    public function adaptedOrderBy($column, $direction = 'asc')
-    {
-        return $this->builder->orderBy($column, $direction);
-    }
+    /**
+     * @var Builder
+     */
+    protected $builder;
 
     public function adaptedWhereNull($column, $boolean = 'and', $not = false)
     {
@@ -34,8 +28,4 @@ class ClickHouseBuilderAdapter implements IKendoQueryBuilderAdapter
         return $this->builder->limit($limit, $offset);
     }
 
-    public function adaptedCount($columns = '*')
-    {
-        return $this->builder->count($columns);
-    }
 }

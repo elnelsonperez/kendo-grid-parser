@@ -1,9 +1,10 @@
 <?php
 
-namespace ElNelsonPerez\KendoGridParser;
+namespace ElNelsonPerez\KendroGridParser\Parsers;
+use ElNelsonPerez\KendroGridParser\Base\KendoGridParser;
 use Illuminate\Support\Facades\DB;
 
-class EloquentKendoGridService extends KendoGridService
+class EloquentKendoGridParser extends KendoGridParser
 {
     protected $stringOps = [
         'eq'             => 'like',
