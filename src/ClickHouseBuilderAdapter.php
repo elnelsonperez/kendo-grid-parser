@@ -1,17 +1,15 @@
 <?php
 
 namespace ElNelsonPerez\KendoGridParser;
+use Tinderbox\ClickhouseBuilder\Query\Builder;
 use Tinderbox\ClickhouseBuilder\Query\Expression;
 
 class ClickHouseBuilderAdapter implements IKendoQueryBuilderAdapter
 {
 
-    /**
-     * @var Tinderbox\ClickhouseBuilder\Integrations\Laravel\Builder
-     */
     private $builder;
 
-    public function __construct(Tinderbox\ClickhouseBuilder\Integrations\Laravel\Builder $builder)
+    public function __construct(Builder $builder)
     {
         $this->builder = $builder;
     }

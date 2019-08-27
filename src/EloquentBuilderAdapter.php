@@ -2,14 +2,14 @@
 
 namespace ElNelsonPerez\KendoGridParser;
 
+use Illuminate\Database\Query\Builder;
+
 class EloquentBuilderAdapter implements IKendoQueryBuilderAdapter
 {
-    /**
-     * @var Illuminate\Database\Query\Builder
-     */
+
     private $builder;
 
-    public function __construct(Illuminate\Database\Query\Builder $builder)
+    public function __construct(Builder $builder)
     {
         $this->builder = $builder;
     }
