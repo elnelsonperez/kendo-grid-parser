@@ -90,3 +90,6 @@ You can publish the packages configuration to customize/extend the implementatio
 `php artisan vendor:publish --provider="ElNelsonPerez\KendoGridParser\KendoGridParserServiceProvider"`
 
 Further configuration options could be provided upon request.
+
+##Motivation
+I decided to make this a package to reuse between my projects as I deal with Kendo Grid and Laravel often enough, and figured it would be useful to someone else.
