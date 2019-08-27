@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnelsonperez\KendoGridParser;
+namespace ElNelsonPerez\KendoGridParser;
 
 use ElNelsonPerez\KendoGridParser\Exceptions\KendoGridServiceException as Exception;
 

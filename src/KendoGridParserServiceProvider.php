@@ -1,8 +1,7 @@
 <?php
 
-namespace Elnelsonperez\KendoGridParser;
+namespace ElNelsonPerez\KendoGridParser;
 
-use Elnelsonperez\KendoGridParser\KendoGridService;
 use Illuminate\Support\ServiceProvider;
 
 class KendoGridParserServiceProvider extends ServiceProvider
