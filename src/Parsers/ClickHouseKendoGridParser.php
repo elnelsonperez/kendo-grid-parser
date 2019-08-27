@@ -1,7 +1,7 @@
 <?php
 
-namespace ElNelsonPerez\KendroGridParser\Parsers;
-use ElNelsonPerez\KendroGridParser\Base\KendoGridParser;
+namespace ElNelsonPerez\KendoGridParser\Parsers;
+use ElNelsonPerez\KendoGridParser\Base\KendoGridParser;
 use Tinderbox\ClickhouseBuilder\Query\Expression;
 
 class ClickHouseKendoGridParser extends KendoGridParser

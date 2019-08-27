@@ -1,9 +1,9 @@
 <?php
 
-namespace ElNelsonPerez\KendroGridParser\Base;
+namespace ElNelsonPerez\KendoGridParser\Base;
 
-use ElNelsonPerez\KendroGridParser\Exceptions\KendoGridServiceException as Exception;
-use ElNelsonPerez\KendroGridParser\Base\Contracts\IKendoQueryBuilderAdapter;
+use ElNelsonPerez\KendoGridParser\Exceptions\KendoGridServiceException as Exception;
+use ElNelsonPerez\KendoGridParser\Base\Contracts\IKendoQueryBuilderAdapter;
 
 abstract class KendoGridParser
 {

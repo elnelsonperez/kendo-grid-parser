@@ -1,6 +1,6 @@
 <?php
 
-namespace ElNelsonPerez\KendroGridParser;
+namespace ElNelsonPerez\KendoGridParser;
 
 use Illuminate\Support\ServiceProvider;
 

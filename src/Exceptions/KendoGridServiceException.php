@@ -1,6 +1,6 @@
 <?php
 
-namespace ElNelsonPerez\KendroGridParser\Exceptions;
+namespace ElNelsonPerez\KendoGridParser\Exceptions;
 
 class KendoGridServiceException extends \Exception
 {

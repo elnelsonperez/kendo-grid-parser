@@ -1,8 +1,8 @@
 <?php
 
-namespace ElNelsonPerez\KendroGridParser\Adapters;
+namespace ElNelsonPerez\KendoGridParser\Adapters;
 
-use ElNelsonPerez\KendroGridParser\Base\KendoQueryBuilderAdapter;
+use ElNelsonPerez\KendoGridParser\Base\KendoQueryBuilderAdapter;
 
 class EloquentBuilderAdapter extends KendoQueryBuilderAdapter
 {

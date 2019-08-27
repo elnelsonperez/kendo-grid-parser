@@ -1,7 +1,7 @@
 <?php
-namespace ElNelsonPerez\KendroGridParser\Base;
+namespace ElNelsonPerez\KendoGridParser\Base;
 
- use ElNelsonPerez\KendroGridParser\Base\Contracts\IKendoQueryBuilderAdapter;
+ use ElNelsonPerez\KendoGridParser\Base\Contracts\IKendoQueryBuilderAdapter;
 
  abstract class KendoQueryBuilderAdapter implements IKendoQueryBuilderAdapter
 {

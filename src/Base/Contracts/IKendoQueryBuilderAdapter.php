@@ -1,5 +1,5 @@
 <?php
-namespace ElNelsonPerez\KendroGridParser\Base\Contracts;
+namespace ElNelsonPerez\KendoGridParser\Base\Contracts;
 
 interface IKendoQueryBuilderAdapter
 {

@@ -1,7 +1,7 @@
 <?php
 
-namespace ElNelsonPerez\KendroGridParser\Adapters;
-use ElNelsonPerez\KendroGridParser\Base\KendoQueryBuilderAdapter;
+namespace ElNelsonPerez\KendoGridParser\Adapters;
+use ElNelsonPerez\KendoGridParser\Base\KendoQueryBuilderAdapter;
 use Tinderbox\ClickhouseBuilder\Integrations\Laravel\Builder;
 use Tinderbox\ClickhouseBuilder\Query\Expression;
 
