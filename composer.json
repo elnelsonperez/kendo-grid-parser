@@ -1,0 +1,25 @@
+{
+    "name": "elnelsonperez/kendo-grid-parser",
+    "description": "A package to apply any Kendo Grid filters to a queyr builder instance in Laravel.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nelson Perez",
+            "email": "me@nelsonperez.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "ElNelsonPerez\\KendoGridParser\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ElNelsonPerez\\KendoGridParser\\KendoGridParserServiceProvider"
+            ]
+        }
+    },
+    "require": {}
+}
