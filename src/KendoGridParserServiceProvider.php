@@ -24,7 +24,7 @@ class KendoGridParserServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(KendoGridService::class, new EloquentKendoGridService());
+        $this->app->bind(KendoGridService::class, $this->app->make(EloquentKendoGridService::class));
         $this->app->bind(IKendoQueryBuilderAdapter::class, $this->app->make(EloquentBuilderAdapter::class));
     }
 
