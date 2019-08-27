@@ -14,7 +14,7 @@ class KendoGridParserServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            app_path('Services/KendoGrid/config.php') => config_path('kendo_grid_parser.php'),
+            __DIR__.'/config.php' => config_path('kendo_grid_parser.php'),
         ]);
     }
 
@@ -26,7 +26,7 @@ class KendoGridParserServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            app_path('Services/KendoGrid/config.php'), 'kendo_grid_parser'
+            __DIR__.'/config.php', 'kendo_grid_parser'
         );
 
     }
