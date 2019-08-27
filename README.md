@@ -1,6 +1,10 @@
 # Laravel Kendo Grid Parser
 
 Takes a Kendo Angular Grid state and applies all its filters to a Laravel query builder instance.
+Works with any of these query builders out of the box:
+- `\Illuminate\Database\Query\Builder::class`
+- ``\Illuminate\Database\Query\Builder::class``
+- `\Tinderbox\ClickhouseBuilder\Integrations\Laravel\Builder::class` (https://github.com/the-tinderbox/ClickhouseBuilder)
 
 Tested with `@progress/kendo-angular-grid v3.X.X` and Laravel 5.6 and up.
 
@@ -65,7 +69,9 @@ This would be sent from the client and into the controller below.
                 'name'                              => 'string',
                 'address'                           => 'string',
             ],
-            // The query builder instance to apply the filters to
+            // The query builder instance to apply the filters to. 
+            // The service detects the query builder instance class and chooses which adapter to use to build the resulting
+            // query builder based on the packages configuration
             $query
         );
 
@@ -76,4 +82,11 @@ This would be sent from the client and into the controller below.
     }
 ```
 
+The returned query builder instance would have all the filters received applied to it, but you can continue using it as you please.
+## Configuration
 
+You can publish the packages configuration to customize/extend the implementations used by doing
+
+`php artisan vendor:publish --provider="ElNelsonPerez\KendoGridParser\KendoGridParserServiceProvider"`
+
+Further configuration options could be provided upon request.

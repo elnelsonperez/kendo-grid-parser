@@ -1,7 +1,7 @@
 {
     "name": "elnelsonperez/kendo-grid-parser",
     "version": "1.0",
-    "description": "A package to apply any Kendo Grid filters to a query builder instance in Laravel.",
+    "description": "A package to apply Kendo Grid filters to a query builder instance in Laravel.",
     "license": "MIT",
     "keywords": [
        "kendo",
