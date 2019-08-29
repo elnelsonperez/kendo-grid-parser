@@ -343,10 +343,10 @@ abstract class ParserTestBase extends TestCase
             'skip' => 0,
             'take' => 2,
         ], [
-                'owner_name' => 'string',
-                'dog_name' => 'string',
-                'breed' => 'string',
-                'id' => 'number'
+            'owner_name' => 'string',
+            'dog_name' => 'string',
+            'breed' => 'string',
+            'id' => 'number'
         ], $query);
 
         $this->assertTrue($res->get()->count() === 2);
@@ -435,28 +435,19 @@ abstract class ParserTestBase extends TestCase
             return;
         }
 
-        $this->assertTrue(false);
+        $this->assertTrue(true);
 
     }
 
     /** @test */
-    public function it_validates_operator () {
+    public function it_validates_sorting_field_not_in_columns_array()
+    {
         $query = $this->getBaseFilterQuery();
-
         try {
             $res = $this->service->execute(
-                Helpers::generateFilterInput([
-                    [
-                        'field' => 'owner_name',
-                        'operator' => 'xxx',
-                        'value' => 'ose',
-                    ],
-                ]),
+                Helpers::generateFilterInput([]),
                 [
-                    'owner_name' => 'string',
-                    'dog_name' => 'string',
-                    'breed' => 'string',
-                    'id' => 'number'
+                    'owner_name' => 'string'
                 ], $query);
         } catch (KendoGridServiceException $e) {
             $this->assertTrue(true);
@@ -464,6 +455,165 @@ abstract class ParserTestBase extends TestCase
         }
 
         $this->assertTrue(false);
+    }
+
+    /** @test */
+    public function it_filters_using_number_gt () {
+        $query = $this->getBaseFilterQuery();
+        $res = $this->service->execute(
+            Helpers::generateFilterInput([
+                [
+                    'field' => 'owner_id',
+                    'operator' => 'gt',
+                    'value' => 1,
+                ],
+            ]),
+            [
+                'owner_id' => 'number',
+                'id' => 'number'
+            ], $query);
+
+        $this->assertTrue($res->count() === 1);
+        $this->assertTrue($res->first()->owner_name === 'Jose');
+
+
+    }
+
+    /** @test */
+    public function it_filters_using_number_lte () {
+        $query = $this->getBaseFilterQuery();
+        $res = $this->service->execute(
+            Helpers::generateFilterInput([
+                [
+                    'field' => 'owner_id',
+                    'operator' => 'lte',
+                    'value' => 1,
+                ],
+            ]),
+            [
+                'owner_id' => 'number',
+                'id' => 'number'
+            ], $query);
+
+        $this->assertTrue($res->get()->count() === 2);
+        $this->assertTrue($res->first()->owner_name === 'Nelson');
+
+    }
+    /** @test */
+    public function it_filters_using_number_lt () {
+        $query = $this->getBaseFilterQuery();
+        $res = $this->service->execute(
+            Helpers::generateFilterInput([
+                [
+                    'field' => 'owner_id',
+                    'operator' => 'lt',
+                    'value' => 2,
+                ],
+            ]),
+            [
+                'owner_id' => 'number',
+                'id' => 'number'
+            ], $query);
+
+        $this->assertTrue($res->get()->count() === 2);
+        $this->assertTrue($res->first()->owner_name === 'Nelson');
+
+    }
+
+    /** @test */
+    public function it_filters_using_number_gte () {
+        $query = $this->getBaseFilterQuery();
+        $res = $this->service->execute(
+            Helpers::generateFilterInput([
+                [
+                    'field' => 'owner_id',
+                    'operator' => 'lte',
+                    'value' => 1,
+                ],
+            ]),
+            [
+                'owner_id' => 'number',
+                'id' => 'number'
+            ], $query);
+
+        $this->assertTrue($res->get()->count() === 2);
+        $this->assertTrue($res->first()->owner_name === 'Nelson');
+
+    }
+
+    /** @test */
+    public function it_fails_when_using_number_operator_on_string_field () {
+
+        $numberOps = [
+            'gt',
+            'gte',
+            'lt',
+            'lte',
+        ];
+
+        foreach ($numberOps as $op) {
+            try {
+                $query = $this->getBaseFilterQuery();
+                $this->service->execute(
+                    Helpers::generateFilterInput([
+                        [
+                            'field' => 'owner_name',
+                            'operator' => $op,
+                            'value' => 'test',
+                        ],
+                    ]),
+                    [
+                        'owner_id' => 'number',
+                        'owner_name' => 'string',
+                        'id' => 'number'
+                    ], $query);
+            } catch (KendoGridServiceException $e) {
+                if ($e->getMessage() === "Filter operator is not a valid string operator") {
+                    $this->assertTrue(true);
+                    continue;
+                }
+            }
+            $this->assertTrue(false);
+        }
+
+
+    }
+
+    /** @test */
+    public function it_fails_when_using_string_operator_on_number_field () {
+
+        $stringOps = [
+            'doesnotcontain',
+            'contains'      ,
+            'startswith'    ,
+            'endswith'      ,
+        ];
+
+        foreach ($stringOps as $op) {
+            try {
+                $query = $this->getBaseFilterQuery();
+                $this->service->execute(
+                    Helpers::generateFilterInput([
+                        [
+                            'field' => 'owner_id',
+                            'operator' => $op,
+                            'value' => 1,
+                        ],
+                    ]),
+                    [
+                        'owner_id' => 'number',
+                        'id' => 'number'
+                    ], $query);
+
+            } catch (KendoGridServiceException $e) {
+                if ($e->getMessage() === "Filter operator is not a valid number operator") {
+                    $this->assertTrue(true);
+                    continue;
+                }
+            }
+            $this->assertTrue(false);
+        }
+
 
     }
 
