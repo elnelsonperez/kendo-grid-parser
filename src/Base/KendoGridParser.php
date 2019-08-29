@@ -158,8 +158,6 @@ abstract class KendoGridParser
         }
     }
 
-
-
     /**
      * @param array $input
      * @param array $columns
@@ -168,7 +166,7 @@ abstract class KendoGridParser
      * @return mixed
      * @throws Exception
      */
-    public function execute(array $input, array $columns, IKendoQueryBuilderAdapter &$query, $disable_limit = false)
+    public function execute(array $input, array $columns, IKendoQueryBuilderAdapter &$query)
     {
         $this->input = $input;
         $this->columns = $columns;
@@ -178,13 +176,11 @@ abstract class KendoGridParser
         if (isset($this->input[$this->filterKey]) && is_array($this->input[$this->filterKey]))
             $this->filter($query, $this->input[$this->filterKey]);
 
-        if (!$disable_limit) {
-            if (isset($this->input['take']) && !isset($this->input['skip'])) {
-                $query->adaptedLimit($this->input['take']);
-            }
-            if (isset($this->input['skip']) && isset($this->input['take'])) {
-                $query->adaptedLimit($this->input['take'], $this->input['skip']);
-            }
+        if (isset($this->input['take']) && !isset($this->input['skip'])) {
+            $query->adaptedLimit($this->input['take']);
+        }
+        if (isset($this->input['skip']) && isset($this->input['take'])) {
+            $query->adaptedLimit($this->input['take'], $this->input['skip']);
         }
 
         return $query->getQueryBuilder();
