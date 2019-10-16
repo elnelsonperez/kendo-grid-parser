@@ -8,6 +8,7 @@ use ElNelsonPerez\KendoGridParser\Exceptions\KendoGridServiceException;
 
 class KendoGridService
 {
+
     public function execute (array $input, array $columns, &$query) {
         $classname = (new \ReflectionClass($query))->getName();
 
