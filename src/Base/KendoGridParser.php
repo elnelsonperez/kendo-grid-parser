@@ -152,7 +152,7 @@ abstract class KendoGridParser
             } catch (\Exception $e) {
                 throw new Exception('Invalid filter date value');
             }
-            $query->adaptedWhere($filter['field'], $this->numberOps[$filter['operator']], $value->format('Y-m-d H:i:s'), $logic);
+            $query->adaptedWhere($filter['field'], $this->numberOps[$filter['operator']], $value->format('Y-m-d'), $logic);
         } else {
             throw new Exception('Unexpected column type');
         }
