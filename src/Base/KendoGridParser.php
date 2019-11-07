@@ -117,6 +117,16 @@ abstract class KendoGridParser
             return;
         }
 
+        if ($filter['operator'] === 'isempty') {
+            $query->adaptedWhere($filter['field'], '=', '');
+            return;
+        }
+
+        if ($filter['operator'] === 'isnotempty') {
+            $query->adaptedWhere($filter['field'], '!=', '');
+            return;
+        }
+
         if ($this->columns[$filter['field']] === 'string') {
             if (!isset($filter['operator']) or !isset($this->stringOps[$filter['operator']]))
                 throw new Exception('Filter operator is not a valid string operator');
