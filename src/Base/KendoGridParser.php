@@ -163,7 +163,7 @@ abstract class KendoGridParser
                 throw new Exception('Invalid filter date value');
             }
             if ($this->columns[$filter['field']] === 'datetime') {
-                $query->adaptedWhere($filter['field'], $this->numberOps[$filter['operator']], $value->format('Y-m-d H:i:s'), $logic);
+                $query->adaptedWhereDate($filter['field'], $this->numberOps[$filter['operator']], $value->format('Y-m-d H:i:s'), $logic);
             } else {
                 $query->adaptedWhere($filter['field'], $this->numberOps[$filter['operator']], $value->format('Y-m-d'), $logic);
             }
