@@ -9,8 +9,9 @@ use ElNelsonPerez\KendoGridParser\Exceptions\KendoGridServiceException;
 class KendoGridService
 {
 
-    public function execute (array $input, array $columns, &$query) {
-        $classname = (new \ReflectionClass($query))->getName();
+    public function execute (array $input, array $columns, $query) {
+        $cloned_query = clone $query;
+        $classname = (new \ReflectionClass($cloned_query))->getName();
 
         $adapter = $this->getAdapter($classname);
         $parser = $this->getParser($classname);
@@ -18,7 +19,7 @@ class KendoGridService
         /**
          * @var $adapter IKendoQueryBuilderAdapter
          */
-        $adapter = $adapter::createFromBuilder($query);
+        $adapter = $adapter::createFromBuilder($cloned_query);
 
         /**
          * @var $parser KendoGridParser
