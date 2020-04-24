@@ -28,4 +28,9 @@ class ClickHouseBuilderAdapter extends KendoQueryBuilderAdapter
         return $this->builder->limit($limit, $offset);
     }
 
+    public function adaptedWhereRaw($column, $operator = null, $value = null, $boolean = 'and')
+    {
+        $this->builder->where(raw($column), $operator, $value, $boolean);
+    }
+
 }

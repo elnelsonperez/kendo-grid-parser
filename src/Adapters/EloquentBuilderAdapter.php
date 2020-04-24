@@ -3,6 +3,7 @@
 namespace ElNelsonPerez\KendoGridParser\Adapters;
 
 use ElNelsonPerez\KendoGridParser\Base\KendoQueryBuilderAdapter;
+use Illuminate\Support\Facades\DB;
 
 class EloquentBuilderAdapter extends KendoQueryBuilderAdapter
 {
@@ -23,5 +24,8 @@ class EloquentBuilderAdapter extends KendoQueryBuilderAdapter
         $this->builder->whereNull($column, $boolean, $not);
     }
 
-
+    public function adaptedWhereRaw($column, $operator = null, $value = null, $boolean = 'and')
+    {
+        $this->builder->where(DB::raw($column), $operator, $value, $boolean);
+    }
 }
